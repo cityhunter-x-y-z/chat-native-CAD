@@ -1,0 +1,28 @@
+[package]
+name = "tri-server"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+tri-api = { workspace = true }
+axum = { workspace = true, features = ["ws", "macros"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "fs", "signal", "time"] }
+futures-util = "0.3"
+tracing = "0.1"
+async-trait = "0.1"
+# rustls rather than the system OpenSSL: the proxy has to build the same way on a CI box
+# as on a laptop, and a TLS stack that depends on what is installed is one that does not.
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+tokio-tungstenite = "0.28"
+tri-import-dxf = { workspace = true }
+
+[[bin]]
+name = "tri-server"
+path = "src/main.rs"

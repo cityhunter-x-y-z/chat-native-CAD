@@ -1,0 +1,32 @@
+# Optional in-repo Rust toolchain (see README.md)
+.toolchain/
+target/
+pkg/
+node_modules/
+dist/
+*.tsbuildinfo
+
+# wasm-bindgen output for the web app (rebuild with `cd apps/web && npm run wasm`)
+apps/web/wasm/
+# Blob store the dev/demo session server writes to (TRIMENSION_STORE)
+storage/
+
+# Carried over from the cloud-march monorepo root .gitignore
+node_modules/
+**/dist/
+**/dist-ssr/
+**/.next/
+**/.next-build/
+**/out/
+logs
+*.log
+npm-debug.log*
+*.local
+.env
+.env.*
+!.env.example
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.tsbuildinfo
